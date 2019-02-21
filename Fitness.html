@@ -1,5 +1,6 @@
+
+
 <html>
-<head>
 <style>
 body{ background-color:skyblue;}
 .form{
@@ -11,61 +12,110 @@ margin:5% auto
 }
 .container{
  position: relative;
-  text-align: center;
+  text-align: inherit;
  font-size: 22px;
+margin:5%auto 50%auto;
+left:150px;
 
 }
-input[type=text],input[type=password],input[type=number]{
-border:none;
- border-bottom: 2px solid black;
+input[type=number]{
+width:70px;
+height:25px;
+padding:2px;
 color: black;
 font-size:16px;
 }
-
-.imgcontainer {
+.form2{
+ justify-content:center;
+}
+#fid{
+width:100px;
+height:30px;
+padding:15px;
+}
+#button {
+ background-color:white;
+  border-color:blue ;
+  color: Black;
+  padding: 10px 30px;
   text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
 }
-img.logo {
-  width: 15%;
-  border-radius: 30%;
+#button:hover {
+border:none;
+  background-color: black;
+  color: white;
 }
-button:hover {
-  opacity: 0.8;
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
 }
 
+}
 </style>
-</head>
 <body>
-
 <h1 class="form">FIGHT FOR FITNESS</h1>
- <div class="imgcontainer">
- <img src="C:\Users\518355\Pictures\Saved Pictures\fitness.png" alt="logo" class="logo">
-    </div>
 <div class="container">
-      <p><label for="fname"><b>Username:</b>&nbsp</label>
-      <input type="text" placeholder="Enter Username" name="fname" required>
+    <p><label ><b>Age(Years):</b>&nbsp</label>
+      <input type="number" id="fage" name="fage" required>
 &nbsp<br></p>
-    <p><label for="fpsw">  <b>Password:</b>&nbsp
-      <input type="password" placeholder="Enter Password" name="fpsw" required>
+      <p><label ><b>Height(in cms):</b>&nbsp</label>
+      <input type="number" id="fhght"  name="fwght" required>
+&nbsp<br></p>
+    <p><label >  <b>Weight(in Kg):</b>&nbsp</label>
+      <input type="number"id="fwght" name="fhght" required>
     &nbsp<br>  </p>
-  <a href="second.html" >
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" >Login</button></a>
+<p><b>Gender:</b> &nbsp<input type="radio" name="gender" value="male" checked> Male &nbsp
+  <input type="radio" name="gender" value="female"> Female &nbsp
+  <input type="radio" name="gender" value="other"> Other 
+</p>
+
+<p>
+ <input id="button" type="submit" value="Submit" onclick="bmi()"></p>
+
+
+<p><b>BMI:</b> &nbsp<input type="number" id="fid" name="fbmi"> </p>
+<div >
+<textarea id="text"></textarea>
 </div>
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none"; 
-
-
-    }
+</div>
+<script type="text/javascript">
+function bmi(){
+var h,w,bmi,c,d;
+var message;
+h=document.getElementById("fhght").value;
+w=document.getElementById("fwght").value;
+c=h/100;
+d=Math.pow(c,2);
+bmi =w/d;
+if(bmi<=18.5){
+message="you are underweight";
+document.getElementById("text").value=message;
+}
+else if(bmi>18.5 && bmi<24.9)
+{
+message="you are healthy";
+document.getElementById("text").value=message;
+}
+else if(bmi>24.9)
+{
+message="you are overweight";
+document.getElementById("text").value=message;
+}
+document.getElementById("fid").value=bmi;
 }
 </script>
-
 </body>
 </html>
